@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <style>
+            body{
+                background: linear-gradient(-450deg,tomato,lightyellow);
+            }
+            td{
+                height: 3rem;
+                width: 3rem;
+                color: cyan;
+                font-size: 2rem;
+                border: 2px solid black; 
+                cursor: pointer;
+                background:grey;
+                text-align:center ;
+            }
+            td:hover{
+                opacity: 0.8;
+            }
+            table,.refresh{
+                margin-left: 42%;
+                margin-right: 40%; 
+            }
+            .refresh{
+                color: red;
+                margin-top: 10%;
+                cursor: pointer;
+            }
+            .title{
+                font-size: 5rem;
+                text-shadow: 2px 2px 2px blue;
+                color: chartreuse;
+                text-align: center;
+            }
+        </style>
+        <title>XO</title>
+        <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTuF-xOTFstSExNoefyYEz2S8wiTSdcjKTetA&usqp=CAU">
+        <script src="https://use.fontawesome.com/2d18c8f799.js"></script>
+    </head>
+    <body>
+        <!-- First Example of javascript -->
+        <div class="xo">
+            <div class="title"><i class="fa fa-gamepad" aria-hidden="true"></i>
+                X-O Game</div>
+            <i class="fa fa-refresh refresh" aria-hidden="true" onClick="window.location.reload();"></i>
+            <table>
+                <tr>
+                    <td class="1" id="1" onclick="click1('1')"></td>
+                    <td class="2" id="2" onclick="click1('2')"></td>
+                    <td class="3" id="3" onclick="click1('3')"></td>
+                </tr>
+                <tr>
+                    <td class="4" id="4" onclick="click1('4')"></td>
+                    <td class="5" id="5" onclick="click1('5')"></td>
+                    <td class="6" id="6" onclick="click1('6')"></td>
+                </tr>
+                <tr>
+                    <td class="7" id="7" onclick="click1('7')"></td>
+                    <td class="8" id="8" onclick="click1('8')"></td>
+                    <td class="9" id="9" onclick="click1('9')"></td>
+                </tr>
+            </table>
+            
+        </div>
+        <script type="text/javascript">
+            var chance=1;
+            var index=[[0,0],[0,1],[0,2],[1,0],[1,1],[1,2],[2,0],[2,1],[2,2]]
+            var mat=[];
+            var f=false;
+            for(let i=0;i<3;i++)    mat[i]=[];
+            function click1(q){
+                if(f){
+                    alert("Player "+chance+" Won");
+                    return;
+                }
+                var x=index[+q-1];
+                if(mat[x[0]][x[1]]===1 || mat[x[0]][x[1]]===0)    return;
+                if(chance===1){
+                    document.getElementById(q).innerHTML='x';
+                    mat[x[0]][x[1]]=1;
+                }
+                else{
+                    document.getElementById(q).innerHTML='o';
+                    mat[x[0]][x[1]]=0;
+                }
+                if(checkwin(mat,x)){
+                    alert("Player "+chance+" wins");
+                    f=true;
+                    return;
+                }
+                if(chance===1)  chance=2;
+                else    chance=1;   
+            }
+            function checkwin(mat,x){
+                var tr=mat[x[0]][x[1]];
+                var count=0;
+                for(let i=0;i<3;i++){
+                    if(mat[i][x[1]]===tr)    count++;
+                    else    break;
+                }
+                if(count==3)    return true;
+                count=0;
+                for(let i=0;i<3;i++){
+                    if(mat[x[0]][i]===tr)    count++;
+                    else    break;
+                }
+                if(count==3)    return true;
+                var count=0;
+                if(x[0]===x[1] || x[0]===2-x[1] || x[1]==2-x[0]){
+                    for(let i=x[0],j=x[1];i>-1 && j>-1;i--,j--){
+                        if(mat[i][j]===tr)    count++;
+                        else    break;
+                    }
+                    for(let i=x[0]+1,j=x[1]+1;i<3 && j<3;i++,j++){
+                        if(mat[i][j]===tr)    count++;
+                        else    break;
+                    }
+                    if(count==3)    return true;
+                    count=0;
+                    for(let i=x[0],j=x[1];i>-1 && j<3;i--,j++){
+                        if(mat[i][j]===tr)    count++;
+                        else    break;
+                    }
+                    for(let i=x[0]+1,j=x[1]-1;i<3 && j>-1;i++,j--){
+                        if(mat[i][j]===tr)    count++;
+                        else    break;
+                    }
+                    if(count==3)    return true;
+                }
+                return false;
+            }
+        </script>   
+            </body>
+</html>
+</DOCTYPE>
