@@ -1,8 +1,9 @@
 body{
     margin: 0;
+    padding: 0;
 }
 section{
-    width: 100%;
+    width:100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -43,6 +44,7 @@ section{
 }
 .namediv{
     text-align: center;
+    margin-top: 12rem;
 }
 .name{
     margin-bottom: 0.5rem;
@@ -56,11 +58,11 @@ section{
 }
 .name::first-letter{
     font-size:10rem;
-    letter-spacing: -2rem;
-    
+    letter-spacing: -2rem;   
 }
 .icon{
     margin-left:38px;
+    margin-bottom:15rem ;
 }
 .icon li{
     padding-right: 10px;
@@ -70,7 +72,7 @@ section{
     border-radius: 50%;
     transition: color 0.8s;
 }.icon li a i:last-child{
-    margin-bottom:15rem ;
+    
 }
 .icon li a i:hover{
     box-shadow:0px 0px 6px 2px seashell;
@@ -81,14 +83,13 @@ section{
 }
 .dp{
     text-align: center;
-    margin-top: -18vh;
-    
+    margin-top: -8em;   
 }
 .dp img{
-    box-shadow: 0px 0px 6px 3px teal;
-    height: 38vh;
-    width: 20vw;
-    border-radius: 80%;
+    box-shadow: 0rem 0rem 0.9rem 0.3rem teal;
+    height: 20rem;
+    width: 15rem;
+    border-radius: 50%;
 }
 .about-info{
     font-size: 30px;
@@ -102,16 +103,6 @@ section:nth-child(2n){
 #skills{
     padding-bottom: 75px;
 }
-/* .skills-title span{
-    letter-spacing: 3px;
-    font-size: 40px;
-    padding-top: 10px;
-    margin-right:0.5rem;
-    display: inline-block;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-} */
 .skills-cap{
     width: 70%;
     display:flex;
@@ -336,6 +327,10 @@ section:nth-child(2n){
 .submit:hover{
     cursor: pointer;
     opacity: 0.6;
+}
+#contact{
+    min-width: 100%;
+    width: max-content;
 }
 .contact-cont{
     display: flex; 
