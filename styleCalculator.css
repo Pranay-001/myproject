@@ -1,0 +1,63 @@
+#res{
+    color: black;
+    font-family: cursive;
+    font-size: 1rem;
+    min-width: 10rem;
+    border:none;
+    margin-top: 30%;
+    margin-bottom:1rem ;
+    box-shadow: 0px 0px 12px 8px orange;
+    background: lavender;
+}
+.calc-cont{
+    text-align-last:center;
+    margin:0;
+    /* border:2px solid black; */
+    padding:0 ;
+    min-height: 100vh;
+    max-height: 100vh;
+    color: purple;
+    background: repeating-radial-gradient(10rem,blue,cyan,red);
+    background-attachment: fixed;
+}
+#cal-title{
+    color: maroon;
+    font-size:3rem;
+    text-shadow: 1px 2px 2px orange;
+}
+.calc{
+    height:80vh;
+    width: 40%;
+    margin:auto;
+}
+.calc table{
+    /* border:2px solid black; */
+    height: 30%;
+    width: 25%;
+    margin:auto;
+}
+.calc input{
+    width: 25%;
+    margin:auto;
+}
+.calc table tr td{
+    background-color: orange;
+    border-radius: 60%;
+    font-size: 30px;
+    cursor: pointer;
+    margin-left:14px;
+    width: 70px;
+    padding:3px ;
+    border: 1px solid black;
+    transition:all ease-in-out 0.8s;
+}
+.calc input{
+    background: lightgrey;
+    border: 1px solid black;
+    font-family: cursive;
+}
+.calc table tr td:hover{
+    background-color: maroon;
+    color: white;
+    box-shadow: 0px 0px 1px 2px black;
+}

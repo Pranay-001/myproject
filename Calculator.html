@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Calculator</title>
+        <script src="https://use.fontawesome.com/2d18c8f799.js"></script>
+        <link rel="stylesheet" type="text/css" href="styleCalculator.css">
+        <script src="Calculator-js.js"></script>
+        <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRwSkXYxRzxfi9wuXKpoH0ps2XBPPrLeJ2XjQ&usqp=CAU">
+    </head>
+    <body class="calc-cont">
+            <h2 id="cal-title" ><i class="fa fa-calculator" aria-hidden="true"></i>CALCULATOR</h2>
+            <div class="calc">
+                <input type="text" id="res" value="" placeholder="Result"/>
+                <br>
+                <table>
+                    <tr>
+                        <td class="tlb" onclick="click1(1)">1</td>
+                        <td class="tlb" onclick="click1(2)">2</td>
+                        <td class="tlb" onclick="click1(3)">3</td>
+                        <td class="tlb" onclick="click1('+')">+</td>
+                        <td class="tlb" onclick="click1('c')">C</td>
+                    </tr>
+                    <tr>
+                        <td class="tlb" onclick="click1(4)">4</td>
+                        <td class="tlb" onclick="click1(5)">5</td>
+                        <td class="tlb" onclick="click1(6)">6</td>
+                        <td class="tlb" onclick="click1('-')">-</td>
+                        <td class="tlb" onclick="click1('/')">/</td>
+                    </tr>
+                    <tr>
+                        <td class="tlb" onclick="click1(7)">7</td>
+                        <td class="tlb" onclick="click1(8)">8</td>
+                        <td class="tlb" onclick="click1(9)">9</td>
+                        <td class="tlb" onclick="click1('*')">*</td>
+                        <td class="tlb" onclick="color1()"><i class="fa fa-random" aria-hidden="true"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tlb" onclick="click1(0)">0</td>
+                        <td class="tlb" style="letter-spacing: -6px; padding-right: 4px; width: inherit;" onclick="click1('00')">00</td>
+                        <td class="tlb" onclick="click1('.')">.</td>
+                        <td class="tlb" style="border-radius: 10%;" colspan=2 onclick="solve()">=</td>
+                    </tr>
+                </table>
+            </div>
+        </body>
+</html>
