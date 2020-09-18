@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tic Tac Toe</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style type="text/css">
+		*{
+			box-sizing: border-box;
+		}
+		body{
+			background-image: url(xobg.jpg);
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+		}
+		.container{
+
+			width: 360px;
+			overflow: hidden;
+			display: inline-block;
+			margin: 50px auto 0 auto;
+			/*margin:auto;*/
+			/*margin-top:50px;*/
+			visibility: hidden;
+		}
+		.container .box{
+			float: left;
+			width: 120px;
+			height: 120px;
+			border:1px solid black;
+			text-align: center;
+			transition: all .25s ease-in-out;
+			font-family: cursive;
+			font-size: 85px;
+			line-height: 100px;
+			cursor: pointer; 
+		}
+
+		.container .box:hover{
+			background: rgba(10,10,10,0.5);
+			color: white;
+		}
+		.container span{
+			width: 100%;display: block;
+			text-align: center;
+			font-family: cursive;
+			color: #fff;
+			font-size: 25px;
+			background:darkorange;
+		} 
+		button{
+			background:#26c281;
+			color: #fff;
+			font-weight: bold;
+			border: 1px solid yellow;
+			cursor: pointer;
+			width: 160px;
+			height: 40px;
+			font-size: 22px;
+			display: block;
+			margin-top:10px;
+		}
+		.play{
+			float: left;
+			padding: 2rem;
+			width: 50%;
+			display: inline-block;
+		}
+		.play button{
+			margin-top:20px;
+		}
+		.play input{
+			font-size: 18px;
+			padding: 6px;
+			outline: none;
+			margin: 5px;
+			background: rgba(255,255,255,0.6);
+			border:0px solid white;
+			border-radius:20px;
+			color: black;
+			font-weight: bold;
+		}
+		.b1{
+			display: inline-block;
+			margin-left: 25%;
+			margin-top:20px;
+		}
+		.b2{
+			border-radius:20px;
+		}
+		h1{
+			text-align: center;
+			font-size: 4rem;
+			color: tomato;
+			font-family: serif;
+			text-shadow: 2px 2px 3px red;
+		}
+		.box{
+			background-color: mistyrose;
+			color:black;
+		}
+		.win{
+			background-color: #F9690E;color:#fff;
+		}
+	</style>
+</head>
+<body>
+	<h1><img src="xoicon.png" width="60px" height="60px" style="border-radius: 50%; border:4px solid tomato;"> Tic Tac Toe</h1>
+	<div class="play">
+		<form onsubmit="return false">
+			<input  placeholder="Player 1 name" type="text" id="player1" required>
+			<input placeholder="Player 1 icon (1character)" type="text" id="i1" required>
+			<br><br>
+			<input  placeholder="Player 2 name" type="text" id="player2" required>
+			<input  placeholder="Player 2 icon (1character)" type="text" id="i2" required>
+			<button type="submit" onclick="fill()" class="b2" >Start Playing</button>
+		</form>
+	</div>
+	<div class="container" id="main">
+		<span id="turn">Play</span>
+		<div class="box" id="box1"></div>
+		<div class="box" id="box2"></div>
+		<div class="box" id="box3"></div>
+		<div class="box" id="box4"></div>
+		<div class="box" id="box5"></div>
+		<div class="box" id="box6"></div>
+		<div class="box" id="box7"></div>
+		<div class="box" id="box8"></div>
+		<div class="box" id="box9"></div>
+		<button class="b1" onclick="replay()">Play Again</button>
+	</div>
+
+	
+
+
+	<script type="text/javascript">
+		var turn=document.getElementById("turn");
+		var win=false;
+		var p1=p2=s1=s2="";
+		var boxes=document.querySelectorAll("#main div"),x_or_o=0;
+		var box1=document.getElementById("box1");
+		var box2=document.getElementById("box2");
+		var box3=document.getElementById("box3");
+		var box4=document.getElementById("box4");
+		var box5=document.getElementById("box5");
+		var box6=document.getElementById("box6");
+		var box7=document.getElementById("box7");
+		var box8=document.getElementById("box8");
+		var box9=document.getElementById("box9");
+		function selectWinnerBoxes(b1,b2,b3){
+			b1.classList.add("win");
+			b2.classList.add("win");
+			b3.classList.add("win");
+			turn.innerHTML=(b1.innerHTML===s1?p1:p2)+" Won Congrats";
+		}
+		function fill(){
+			console.log("dffd");
+			p1=document.getElementById("player1").value;p2=document.getElementById("player2").value;s1=document.getElementById("i1").value;s2=document.getElementById("i2").value;
+			if(p1=="" || s2=="" || s1=="" || p2=="" || p1==p2 || s1==s2)	return;
+			if(!validate(p1,p2,s1,s2))	return;
+			document.getElementById("main").style.visibility="visible";
+			
+		}
+		function validate(p1,p2,s1,s2){
+			return (s1.length==1 && s2.length==1);
+		}
+
+		function getWinner(){
+			
+			//get all possiblities
+			if(box1.innerHTML!=="" && box1.innerHTML===box2.innerHTML && box1.innerHTML===box3.innerHTML){
+				win=true;
+				selectWinnerBoxes(box1,box2,box3);
+				console.log("win");
+			}
+			if(box4.innerHTML!=="" && box4.innerHTML===box5.innerHTML && box4.innerHTML===box6.innerHTML){
+				win=true;
+				selectWinnerBoxes(box4,box5,box6);
+				console.log("win");
+			}
+			if(box7.innerHTML!=="" && box7.innerHTML===box8.innerHTML && box7.innerHTML===box9.innerHTML){
+				win=true;
+				selectWinnerBoxes(box7,box8,box9);
+				console.log("win");
+			}
+			if(box1.innerHTML!=="" && box1.innerHTML===box4.innerHTML && box1.innerHTML===box7.innerHTML){
+				selectWinnerBoxes(box1,box4,box7);
+				win=true;
+				console.log("win");
+			}
+			if(box2.innerHTML!=="" && box2.innerHTML===box5.innerHTML && box2.innerHTML===box8.innerHTML){
+				selectWinnerBoxes(box2,box5,box8);
+				win=true;
+				console.log("win");
+			}
+			if(box3.innerHTML!=="" && box3.innerHTML===box6.innerHTML && box3.innerHTML===box9.innerHTML){
+				selectWinnerBoxes(box3,box6,box9);
+				win=true;
+				console.log("win");
+			}
+			if(box1.innerHTML!=="" && box1.innerHTML===box5.innerHTML && box1.innerHTML===box9.innerHTML){
+				selectWinnerBoxes(box1,box5,box9);
+				win=true;
+				console.log("win");
+			}
+			if(box3.innerHTML!=="" && box3.innerHTML===box5.innerHTML && box3.innerHTML===box7.innerHTML){
+				win=true;
+				selectWinnerBoxes(box3,box5,box7);
+				console.log("win");
+			}
+			if(win){
+				box1=box2=box3=box4=box5=box6=box7=box8=box9=null;
+				for(var i=0;i<boxes.length;i++){
+					boxes[i].onclick="";
+				}
+				win=false;
+			}
+		}
+
+			var boxes=document.querySelectorAll("#main div"), x_or_o=0;
+
+			for(var i=0;i<boxes.length;i++){
+				boxes[i].onclick=function(){
+					if(this.innerHTML!==s1 && this.innerHTML!==s2){
+					if( x_or_o%2===0){
+						console.log( x_or_o);
+						this.innerHTML=s1;
+						turn.innerHTML=s2+" Turn now";
+						getWinner();
+						
+						 x_or_o+=1;
+					}else{
+						console.log( x_or_o);
+						this.innerHTML=s2;
+						turn.innerHTML=s1+" Turn now";
+						getWinner();
+						 x_or_o+=1;
+					}
+				}
+					
+				};
+			}
+
+			function replay(){
+				for(var i=0;i<boxes.length;i++){
+					boxes[i].innerHTML="";
+					turn.innerHTML="Play";
+					turn.style.fontSize="25px";
+					boxes[i].classList.remove("win");
+					box1=document.getElementById("box1");
+					box2=document.getElementById("box2");
+					box3=document.getElementById("box3");
+					box4=document.getElementById("box4");
+					box5=document.getElementById("box5");
+					box6=document.getElementById("box6");
+					box7=document.getElementById("box7");
+					box8=document.getElementById("box8");
+					box9=document.getElementById("box9");
+				}
+				for(var i=0;i<boxes.length;i++){
+				boxes[i].onclick=function(){
+					if(this.innerHTML!==s1 && this.innerHTML!==s2){
+					if( x_or_o%2===0){
+						console.log( x_or_o);
+						this.innerHTML=s1;
+						turn.innerHTML=s2+" Turn now";
+						getWinner();
+						
+						 x_or_o+=1;
+					}else{
+						console.log( x_or_o);
+						this.innerHTML=s2;
+						turn.innerHTML=s1+" Turn now";
+						getWinner();
+						 x_or_o+=1;
+					}
+				}
+					
+				};
+			}
+
+			}
+
+		
+
+	</script>
+
+
+
+
+
+</body>
+</html>
